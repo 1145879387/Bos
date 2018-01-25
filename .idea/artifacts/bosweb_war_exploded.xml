@@ -7,6 +7,9 @@
           <element id="module-output" name="bosweb" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="bosdao-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="bosdao" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.13.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.13.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.13.RELEASE" />

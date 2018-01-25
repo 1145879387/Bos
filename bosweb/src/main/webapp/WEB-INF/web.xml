@@ -24,7 +24,7 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-        <!--FORWARD是服务器内部的转发，则不会让过滤器拦截到，配置FORWARD则是为了被struts拦截到-->
+        <!--FORWARD是服务器内部的转发，默认则不会让过滤器拦截到，配置FORWARD则是为了被struts拦截到-->
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <!--让spring随web容器启动而创建的监听器-->

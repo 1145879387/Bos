@@ -42,11 +42,9 @@
         <!--如果用占位符的方式来表示的话出现上面的错误也是缺少这个标签导致的-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <!--如果需要调用多个方法则需要动态占位符,{1}匹配第一个*号-->
-        <action name="UserAction_*" class="userAction" method="{1}">
-            <result name="regist">/regist.jsp</result>
-            <result name="toHome">/jsp/customer/list.jsp</result>
-            <!--redirect是重定向-->
-            <result name="toLogin">/login.jsp</result>
+        <action name="page_*_*">
+            <!--通配符可以跳转到任何页面，走的是默认的action(actionsupport)-->
+            <result name="success" type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
         </action>
     </package>
 </struts>
