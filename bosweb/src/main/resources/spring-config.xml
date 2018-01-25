@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd               http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+>
+    <!--<bean id="userserviceimpl" class="service.Userserviceimpl">-->
+        <!--&lt;!&ndash;这是service配置，如果是stuts自动装配的话，则是按照名字自动装配，所以id要和变量的名字一致&ndash;&gt;-->
+        <!--&lt;!&ndash;虽然很好用，但是不推荐使用，因为struts自己创建action,spring负责填充属性&ndash;&gt;-->
+        <!--&lt;!&ndash;最好由spring完整来管理action的声生命周期&ndash;&gt;-->
+    <!--</bean>-->
+    <!--将sessionfactory对象交给spring容器管理-->
+     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+    <!--&lt;!&ndash;这是使用外部的hibnatexml配置文件进行配置&ndash;&gt;-->
+         <!--&lt;!&ndash;Cannot unwrap to requested type [javax.sql.DataSource]&ndash;&gt;-->
+         <!--&lt;!&ndash;如果出现这样的错误，请检查是否同时配置了"transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager 事物核心管理器&ndash;&gt;-->
+    <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+<!--</bean>-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--hibnate会通过连接池来配置链接-->
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <!--配置c3p0连接池则不需要配置链接信息-->
+                <!--<prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>-->
+                <!--<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/cao?serverTimezone=UTC</prop>-->
+                <!--<prop key="hibernate.connection.username">root</prop>-->
+                <!--<prop key="hibernate.connection.password">sa</prop>-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!--需要指定映射文件的包路径，不然会有问题-->
+        <!--<property name="mappingDirectoryLocations" value="classpath*:"></property>-->
+        <!--注意，要在rescore下建立文件夹，不然会读取不到-->
+        <property name="mappingDirectoryLocations" value="classpath*:hibre"></property>
+    </bean>
+    <!--spring整合c3p0连接池-->
+    <!--要读取配置文件则需要打开一个开关-->
+    <context:property-placeholder location="classpath*:db.properties"></context:property-placeholder>
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--配置核心事物管理器-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!--配置通知-->
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+         <tx:attributes>
+             <tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="persist*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+             <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" />
+             <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" />
+             <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+         </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <!--第一个*代表返回值任意，第二个*表示对所有方法都进行植入，（..代表不定长参数）-->
+        <aop:pointcut id="txpc" expression="execution(* *.*Impl.*(..))"/>
+        <!--<aop:pointcut id="txpc" expression="execution(* Avs.*(..))"/>-->
+        <!--第一个是通知，第二个是切点，切点是被装饰的方法或类-->
+        <aop:advisor advice-ref="transactionInterceptor" pointcut-ref="txpc"></aop:advisor>
+    </aop:config>
+    <!--使用注解来配置事物-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
+    <!--<context:component-scan base-package=""></context:component-scan>-->
+
+
+</beans>

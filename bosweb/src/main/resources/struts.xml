@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE struts PUBLIC
+                "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+                "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <!--配置常量-->
+    <!--<constant name="struts.action.extension" value=""></constant>-->
+    <!--解决POST提交乱码-->
+    <!--<constant name="struts.i18n.encoding" value="UTF-8"></constant>-->
+    <!--访问时增加的后缀名，用.do才可以访问到-->
+    <!--<constant name="struts.action.extension" value="do"></constant>-->
+    <!--struts热部署，不需要重启，就可以让配置文件生效，而且会显示更多的错误提示，上线的时候建议关掉，会消耗资源-->
+    <constant name="struts.devMode" value="true"></constant>
+    <!--引入配置文件-->
+    <!--<include file="struts.xml"></include>-->
+    <!--碰到BUG，先测试下动态方法调用常量-->
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>-->
+    <!--注意，如果找不到struts-default，需要在项目的moudle中引入默认的配置文件-->
+    <package name="HelloAction" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="PrivilegeInterceptor" class="PrivilegeInterceptor">
+                <!--注册拦截器-->
+            </interceptor>
+            <interceptor-stack name="myStack">
+                <!--<interceptor-ref name="PrivilegeInterceptor">-->
+                    <!--&lt;!&ndash;配置不拦截的方法&ndash;&gt;-->
+                    <!--&lt;!&ndash;regist方法位于useraction之中！&ndash;&gt;-->
+                    <!--<param name="excludeMethods">login,regist</param>-->
+                <!--</interceptor-ref>-->
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <!--到这里配置完毕，默认走的是mystack拦截器-->
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+        <!--由于拦截器返回的是字符串,而customer里没有字符串，所以需要配置全局结果集-->
+        <global-results>
+            <result name="toLogin" type="redirect">login.jsp</result>
+        </global-results>
+        <!--这里需要用到这个标签，2.5增加了安全性-->
+        <!--Method del for action HelloAction is not allowed! - [unknown location]-->
+        <!--There is no Action mapped for namespace [/hello] and action name [HelloAction_del] associated with context path []. - [unknown location]-->
+        <!--如果用占位符的方式来表示的话出现上面的错误也是缺少这个标签导致的-->
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <!--如果需要调用多个方法则需要动态占位符,{1}匹配第一个*号-->
+        <action name="UserAction_*" class="userAction" method="{1}">
+            <result name="regist">/regist.jsp</result>
+            <result name="toHome">/jsp/customer/list.jsp</result>
+            <!--redirect是重定向-->
+            <result name="toLogin">/login.jsp</result>
+        </action>
+    </package>
+</struts>

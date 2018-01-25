@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/cao</property>
+    <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+    <!--报错原因是没有选择正确的方言-->
+    <property name="dialect">org.hibernate.dialect.MySQL55Dialect</property>
+      <!--//MySQL用户名:注意，新建表映射的时候会丢失登录信息-->
+      <!--//MySQL用户密码-->
+    <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
+    <!--这里建议老老实实的用UPDATE，因为CREATE创建会默认删除所有的表结构，容易造成数据丢失，所以，应该先删除有问题的表，在用update自动生成-->
+    <property name="hbm2ddl.auto">update</property>
+    <!--指定session和当前线程绑定,如果是配置spring请务必要干掉-->
+    <!--<property name="hibernate.current_session_context_class">thread</property>-->
+    <!--在进行多对一，或者一对多的时候，引用无关的xml文件有可能造成自动增长属性失效，所以要注释掉下面的东西避免发生错误-->
+  </session-factory>
+</hibernate-configuration>
