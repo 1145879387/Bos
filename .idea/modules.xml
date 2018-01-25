@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosdao/bosdao.iml" filepath="$PROJECT_DIR$/../maven_demo/bosdao/bosdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosdoman/bosdoman.iml" filepath="$PROJECT_DIR$/../maven_demo/bosdoman/bosdoman.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosservice/bosservice.iml" filepath="$PROJECT_DIR$/../maven_demo/bosservice/bosservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosutil/bosutil.iml" filepath="$PROJECT_DIR$/../maven_demo/bosutil/bosutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" filepath="$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_demo.iml" filepath="$PROJECT_DIR$/maven_demo.iml" />
+    </modules>
+  </component>
+</project>
