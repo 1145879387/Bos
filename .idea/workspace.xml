@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92f0439b-11cd-428d-bc98-5db322e45623" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../maven_demo/.idea/artifacts/bosweb_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/.idea/artifacts/bosweb_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../maven_demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -110,8 +105,8 @@
       <file leaf-file-name="struts.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
+            <state relative-caret-position="545">
+              <caret line="48" column="14" lean-forward="true" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
             </state>
           </provider>
           <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
@@ -447,7 +442,7 @@
       <workItem from="1516783868470" duration="941000" />
       <workItem from="1516842294554" duration="1116000" />
       <workItem from="1516843913025" duration="9974000" />
-      <workItem from="1516856776492" duration="2309000" />
+      <workItem from="1516856776492" duration="2359000" />
     </task>
     <task id="LOCAL-00001" summary="第一次小更新，项目待续">
       <created>1516854142288</created>
@@ -477,11 +472,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516858536957</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="第一次小更新，项目待续">
+      <created>1516859834296</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1516859834296</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20469000" />
+    <option name="totallyTimeSpent" value="20519000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -741,8 +743,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
+        <state relative-caret-position="545">
+          <caret line="48" column="14" lean-forward="true" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
