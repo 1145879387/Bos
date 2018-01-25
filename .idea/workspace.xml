@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92f0439b-11cd-428d-bc98-5db322e45623" name="Default" comment="第一次小更新，项目待续">
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosutil/bosutil.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosutil/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosutil/src/main/java/com/bos/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosutil/src/test/java/com/bos/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/spring-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdao/bosdao.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdao/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdoman/bosdoman.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdoman/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdoman/src/main/java/com/bos/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosdoman/src/test/java/com/bos/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosservice/bosservice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/java/PrivilegeInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/webapp/WEB-INF/log4j.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../maven_demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/spring-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/spring-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../maven_demo/bosweb/src/main/resources/struts.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -179,57 +188,6 @@
               <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="maven_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="maven_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="bosweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -370,12 +328,20 @@
       <workItem from="1516783095142" duration="146000" />
       <workItem from="1516783868470" duration="941000" />
       <workItem from="1516842294554" duration="1116000" />
-      <workItem from="1516843913025" duration="9805000" />
+      <workItem from="1516843913025" duration="9914000" />
     </task>
+    <task id="LOCAL-00001" summary="第一次小更新，项目待续">
+      <created>1516854142288</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1516854142288</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17991000" />
+    <option name="totallyTimeSpent" value="18100000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />

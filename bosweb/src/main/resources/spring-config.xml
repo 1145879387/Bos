@@ -13,17 +13,17 @@
         http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 >
     <!--<bean id="userserviceimpl" class="service.Userserviceimpl">-->
-        <!--&lt;!&ndash;这是service配置，如果是stuts自动装配的话，则是按照名字自动装配，所以id要和变量的名字一致&ndash;&gt;-->
-        <!--&lt;!&ndash;虽然很好用，但是不推荐使用，因为struts自己创建action,spring负责填充属性&ndash;&gt;-->
-        <!--&lt;!&ndash;最好由spring完整来管理action的声生命周期&ndash;&gt;-->
+    <!--&lt;!&ndash;这是service配置，如果是stuts自动装配的话，则是按照名字自动装配，所以id要和变量的名字一致&ndash;&gt;-->
+    <!--&lt;!&ndash;虽然很好用，但是不推荐使用，因为struts自己创建action,spring负责填充属性&ndash;&gt;-->
+    <!--&lt;!&ndash;最好由spring完整来管理action的声生命周期&ndash;&gt;-->
     <!--</bean>-->
     <!--将sessionfactory对象交给spring容器管理-->
-     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
     <!--&lt;!&ndash;这是使用外部的hibnatexml配置文件进行配置&ndash;&gt;-->
-         <!--&lt;!&ndash;Cannot unwrap to requested type [javax.sql.DataSource]&ndash;&gt;-->
-         <!--&lt;!&ndash;如果出现这样的错误，请检查是否同时配置了"transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager 事物核心管理器&ndash;&gt;-->
+    <!--&lt;!&ndash;Cannot unwrap to requested type [javax.sql.DataSource]&ndash;&gt;-->
+    <!--&lt;!&ndash;如果出现这样的错误，请检查是否同时配置了"transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager 事物核心管理器&ndash;&gt;-->
     <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
-<!--</bean>-->
+    <!--</bean>-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <!--hibnate会通过连接池来配置链接-->
         <property name="dataSource" ref="dataSource"></property>
@@ -60,17 +60,17 @@
     </bean>
     <!--配置通知-->
     <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
-         <tx:attributes>
-             <tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="persist*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-             <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" />
-             <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" />
-             <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
-         </tx:attributes>
+        <tx:attributes>
+            <tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="persist*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+        </tx:attributes>
     </tx:advice>
     <aop:config>
         <!--第一个*代表返回值任意，第二个*表示对所有方法都进行植入，（..代表不定长参数）-->
