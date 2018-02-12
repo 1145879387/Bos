@@ -13,6 +13,7 @@
         <module>bosdao</module>
         <module>bosservice</module>
         <module>bosweb</module>
+        <!--<module>cxf</module>-->
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -93,7 +94,7 @@
             <artifactId>junit</artifactId>
             <!--注意，这里有可能4.9的无法启动注解，需要改成4.12版本的（他会给你提示）-->
             <version>4.12</version>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -243,12 +244,12 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
-            <version>3.0.1</version>
+            <version>3.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.belerweb</groupId>
@@ -260,20 +261,20 @@
             <artifactId>json-lib</artifactId>
             <version>2.4</version>
             <classifier>jdk15</classifier>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-beanutils</artifactId>
-                    <groupId>commons-beanutils</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-lang</artifactId>
-                    <groupId>commons-lang</groupId>
-                </exclusion>
-            </exclusions>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<artifactId>commons-beanutils</artifactId>-->
+            <!--<groupId>commons-beanutils</groupId>-->
+            <!--</exclusion>-->
+            <!--<exclusion>-->
+            <!--<artifactId>commons-logging</artifactId>-->
+            <!--<groupId>commons-logging</groupId>-->
+            <!--</exclusion>-->
+            <!--<exclusion>-->
+            <!--<artifactId>commons-lang</artifactId>-->
+            <!--<groupId>commons-lang</groupId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
         </dependency>
         <!-- 引入ehcache的依赖 -->
         <dependency>
@@ -293,6 +294,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mailapi</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.quartz-scheduler</groupId>-->
+        <!--<artifactId>quartz</artifactId>-->
+        <!--<version>2.3.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.quartz-scheduler</groupId>-->
+        <!--<artifactId>quartz-jobs</artifactId>-->
+        <!--<version>2.3.0</version>-->
+        <!--</dependency>-->
     </dependencies>
     <build>
         <!-- 插件 -->
@@ -318,7 +339,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/bos</path>
-                    <port>8888</port>
+                    <port>8899</port>
                 </configuration>
             </plugin>
         </plugins>

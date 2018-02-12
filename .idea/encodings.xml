@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/../maven_demo/bosservice" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../maven_demo/bosutil" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../maven_demo/bosweb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../maven_demo/cxf" charset="UTF-8" />
   </component>
 </project>

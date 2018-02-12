@@ -3,12 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd               http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd
+
+
+
+
+		http://cxf.apache.org/jaxws
+		http://cxf.apache.org/schemas/jaxws.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 >
@@ -43,7 +47,12 @@
         <!--需要指定映射文件的包路径，不然会有问题-->
         <!--<property name="mappingDirectoryLocations" value="classpath*:"></property>-->
         <!--注意，要在rescore下建立文件夹，不然会读取不到-->
-        <property name="mappingDirectoryLocations" value="classpath*:hibre"></property>
+        <property name="mappingDirectoryLocations" value="classpath*:com.hbm"></property>
+        <!--<property name="mappingLocations">-->
+        <!--<list>-->
+        <!--<value>classpath:../resources/*.xml</value>-->
+        <!--</list>-->
+        <!--</property>-->
     </bean>
     <!--spring整合c3p0连接池-->
     <!--要读取配置文件则需要打开一个开关-->
@@ -57,6 +66,56 @@
     <!--配置核心事物管理器-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!--配置shriofilter过滤器工厂对象-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"></property>
+        <property name="loginUrl" value="/login.jsp"></property>
+        <property name="successUrl" value="/index.jsp"></property>
+        <!--权限不足跳转到这个页面-->
+        <property name="unauthorizedUrl" value="/validatecode.jsp"></property>
+        <!--注入url的拦截规则-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--一切请求路径，都会被检查当前用户是否完成登录-->
+                /css/** = anon
+                /js/** = anon
+                /images/** = anon
+                <!--一个*匹配一个或多个字符-->
+                /validatecode.jsp* = anon
+                /login.jsp = anon
+                /Useraction_login = anon
+                /easyui/** = anon
+                <!--anon表示放行-->
+                /page_base_staff = perms["staff"]
+                <!--注意，/**是拦截所有请求，会使上面的配置失效-->
+                <!--/** = authc-->
+                /* = authc
+            </value>
+        </property>
+    </bean>
+    <!--注册安全管理器对象-->
+    <!--http://blog.csdn.net/qq383264679/article/details/47025799-->
+    <!--http://blog.csdn.net/u011493599/article/details/52526253-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="bosrealm"></property>
+        <property name="cacheManager" ref="cacheManager"></property>
+    </bean>
+    <bean id="bosrealm" class="com.bos.service.impl.Bosrealm">
+    </bean>
+    <!--开启shiro框架注解支持-->
+    <bean id="advisorAutoProxyCreator"
+          class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <!--如果设置成true则表示对目标类进行cglib代理,子类的形式来进行代理-->
+        <!--默认是JDK代理，即实现接口的方式进行代理，如果是实现action类的话则会实现Modeldriver接口，而这个接口里却没有action类里的特有方法，所以需要使用cglib来进行继承代理-->
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
+    <!--配置shiro框架的通知，用于创建代理对象，和注解和上面的代理方式来互相配合-->
+    <!--开启shiro注解-->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
+    <!--注册一个缓存管理器-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
     </bean>
     <!--配置通知-->
     <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
@@ -72,16 +131,26 @@
             <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
         </tx:attributes>
     </tx:advice>
-    <aop:config>
-        <!--第一个*代表返回值任意，第二个*表示对所有方法都进行植入，（..代表不定长参数）-->
-        <aop:pointcut id="txpc" expression="execution(* *.*Impl.*(..))"/>
-        <!--<aop:pointcut id="txpc" expression="execution(* Avs.*(..))"/>-->
-        <!--第一个是通知，第二个是切点，切点是被装饰的方法或类-->
-        <aop:advisor advice-ref="transactionInterceptor" pointcut-ref="txpc"></aop:advisor>
-    </aop:config>
+    <!--<aop:config>-->
+    <!--&lt;!&ndash;第一个*代表返回值任意，第二个*表示对所有方法都进行植入，（..代表不定长参数）&ndash;&gt;-->
+    <!--<aop:pointcut id="txpc" expression="execution(* *.*Impl.*(..))"/>-->
+    <!--&lt;!&ndash;<aop:pointcut id="txpc" expression="execution(* Avs.*(..))"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;第一个是通知，第二个是切点，切点是被装饰的方法或类&ndash;&gt;-->
+    <!--<aop:advisor advice-ref="transactionInterceptor" pointcut-ref="txpc"></aop:advisor>-->
+    <!--</aop:config>-->
     <!--使用注解来配置事物-->
-    <!--<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
-    <!--<context:component-scan base-package=""></context:component-scan>-->
-
+    <context:annotation-config/>
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    <context:component-scan base-package="com.bos"></context:component-scan>
+    <!--支持spring注解，比如service注解之类的-->
+    <!--<tx:annotation-driven></tx:annotation-driven>-->
+    <!--<bean name="IbasedaoImpl" class="com.bos.dao.base.impl.IbasedaoImpl">-->
+    <!--<property name="sessionFactory" ref="sessionFactory"></property>-->
+    <!--</bean>-->
+    <!--配置代理对象-->
+    <!--注意，如果使用localhost形式则必须要确保ip和项目在一台服务器上，为了以防万一，推荐用IP的形式来做-->
+    <jaxws:client id="crmclient" serviceClass="com.bos.utils.crm.ICustomerService"
+                  address="http://192.168.1.100:8888/bos/service/cxfService">
+    </jaxws:client>
 
 </beans>

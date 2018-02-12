@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/../java项目/BOS-day07/BOS-day07/资料/t_customer.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../maven_demo/Struts2/WebRoot/log/DailyFile/auth_function.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../maven_demo/cxf/src/main/java/cxf/clent/itcast_privilege.sql" dialect="MySQL" />
+  </component>
+</project>

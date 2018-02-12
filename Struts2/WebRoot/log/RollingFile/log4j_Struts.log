@@ -1,0 +1,61 @@
+[FATAL][2018/01/25 14:13:16404][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:13:18753][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:13:18774][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:13:18795][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:13:18820][Test.fun(Test.java:12)]
+调试信息
+ [FATAL][2018/01/25 14:15:4587 ][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:15:46294][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:15:46323][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:15:46368][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:15:46434][Test.fun(Test.java:12)]
+调试信息
+ [FATAL][2018/01/25 14:16:3181 ][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:16:31726][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:16:31732][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:16:31739][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:16:31746][Test.fun(Test.java:12)]
+调试信息
+ [FATAL][2018/01/25 14:20:27249][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:20:27874][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:20:27880][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:20:27885][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:20:27890][Test.fun(Test.java:12)]
+调试信息
+ [FATAL][2018/01/25 14:20:4867 ][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:20:48640][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:20:48645][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:20:48650][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:20:48656][Test.fun(Test.java:12)]
+调试信息
+ [FATAL][2018/01/25 14:21:10988][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:21:10998][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:21:110  ][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:21:111  ][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:21:112  ][Test.fun(Test.java:12)]
+调试信息
+ 

@@ -1,0 +1,11 @@
+[FATAL][2018/01/25 14:16:3181 ][Test.fun(Test.java:8)]
+致命错误
+ [ERROR][2018/01/25 14:16:31726][Test.fun(Test.java:9)]
+普通错误
+ [INFO ][2018/01/25 14:16:31732][Test.fun(Test.java:10)]
+普通信息
+ [WARN ][2018/01/25 14:16:31739][Test.fun(Test.java:11)]
+警告信息
+ [DEBUG][2018/01/25 14:16:31746][Test.fun(Test.java:12)]
+调试信息
+ 

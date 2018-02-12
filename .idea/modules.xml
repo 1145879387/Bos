@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosdao/bosdao.iml" filepath="$PROJECT_DIR$/../maven_demo/bosdao/bosdao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosdoman/bosdoman.iml" filepath="$PROJECT_DIR$/../maven_demo/bosdoman/bosdoman.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosservice/bosservice.iml" filepath="$PROJECT_DIR$/../maven_demo/bosservice/bosservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosutil/bosutil.iml" filepath="$PROJECT_DIR$/../maven_demo/bosutil/bosutil.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" filepath="$PROJECT_DIR$/../maven_demo/bosweb/bosweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bosdao/bosdao.iml" filepath="$PROJECT_DIR$/bosdao/bosdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bosdoman/bosdoman.iml" filepath="$PROJECT_DIR$/bosdoman/bosdoman.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bosservice/bosservice.iml" filepath="$PROJECT_DIR$/bosservice/bosservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bosutil/bosutil.iml" filepath="$PROJECT_DIR$/bosutil/bosutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bosweb/bosweb.iml" filepath="$PROJECT_DIR$/bosweb/bosweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../maven_demo/cxf/cxf.iml" filepath="$PROJECT_DIR$/../maven_demo/cxf/cxf.iml" />
       <module fileurl="file://$PROJECT_DIR$/maven_demo.iml" filepath="$PROJECT_DIR$/maven_demo.iml" />
     </modules>
   </component>

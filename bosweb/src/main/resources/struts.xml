@@ -17,34 +17,72 @@
     <!--<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>-->
     <!--注意，如果找不到struts-default，需要在项目的moudle中引入默认的配置文件-->
     <package name="HelloAction" namespace="/" extends="struts-default">
-        <interceptors>
-            <interceptor name="PrivilegeInterceptor" class="PrivilegeInterceptor">
-                <!--注册拦截器-->
-            </interceptor>
-            <interceptor-stack name="myStack">
+        <!--<interceptors>-->
+        <!--<interceptor name="PrivilegeInterceptor" class="com.bos.intersceptor.PrivilegeInterceptor">-->
+        <!--&lt;!&ndash;注册拦截器&ndash;&gt;-->
+        <!--</interceptor>-->
+        <!--<interceptor-stack name="myStack">-->
                 <!--<interceptor-ref name="PrivilegeInterceptor">-->
                 <!--&lt;!&ndash;配置不拦截的方法&ndash;&gt;-->
                 <!--&lt;!&ndash;regist方法位于useraction之中！&ndash;&gt;-->
                 <!--<param name="excludeMethods">login,regist</param>-->
                 <!--</interceptor-ref>-->
-                <interceptor-ref name="defaultStack"></interceptor-ref>
-            </interceptor-stack>
-        </interceptors>
+        <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
+        <!--</interceptor-stack>-->
+        <!--</interceptors>-->
         <!--到这里配置完毕，默认走的是mystack拦截器-->
-        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+        <!--<default-interceptor-ref name="myStack"></default-interceptor-ref>-->
         <!--由于拦截器返回的是字符串,而customer里没有字符串，所以需要配置全局结果集-->
         <global-results>
-            <result name="toLogin" type="redirect">login.jsp</result>
+            <!--<result name="toLogin" type="redirect">/login.jsp</result>-->
+            <result name="unauthor" type="redirect">/login.jsp</result>
         </global-results>
         <!--这里需要用到这个标签，2.5增加了安全性-->
         <!--Method del for action HelloAction is not allowed! - [unknown location]-->
         <!--There is no Action mapped for namespace [/hello] and action name [HelloAction_del] associated with context path []. - [unknown location]-->
         <!--如果用占位符的方式来表示的话出现上面的错误也是缺少这个标签导致的-->
         <global-allowed-methods>regex:.*</global-allowed-methods>
+        <global-exception-mappings>
+            <exception-mapping exception="org.apache.shiro.authz.UnauthorizedException"
+                               result="unauthor"></exception-mapping>
+        </global-exception-mappings>
         <!--如果需要调用多个方法则需要动态占位符,{1}匹配第一个*号-->
         <action name="page_*_*">
             <!--通配符可以跳转到任何页面，走的是默认的action(actionsupport)-->
             <result name="success" type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
+        </action>
+        <action name="Useraction_*" class="useraction" method="{1}">
+            <result name="login">/login.jsp</result>
+            <!--注意，如果需要跳转到首页的index.jsp则需要在web里开启转发，以便于拦截器去进行拦截，但是这种跳转方式可能会丢失信息，导致El表达式失效-->
+            <!--<result name="home">/index.jsp</result>-->
+            <result name="home" type="redirect">/index.jsp</result>
+            <result name="list" type="redirect">/WEB-INF/pages/admin/userlist.jsp</result>
+            <!--<result name="home">/WEB-INF/pages/common/index.jsp</result>-->
+        </action>
+        <action name="Staff_*" class="staffaction" method="{1}">
+            <result name="list">/WEB-INF/pages/base/staff.jsp</result>
+        </action>
+        <action name="regionaction_*" class="regionaction" method="{1}">
+            <!--<result name="list">/WEB-INF/pages/base/staff.jsp</result>-->
+        </action>
+        <action name="subareaaction_*" class="subareaaction" method="{1}">
+            <result name="list">/WEB-INF/pages/base/subarea.jsp</result>
+        </action>
+        <action name="decidedzoneaction_*" class="decidedzoneaction" method="{1}">
+            <result name="list">/WEB-INF/pages/base/decidedzone.jsp</result>
+        </action>
+        <action name="noticebillAction_*" class="noticebillaction" method="{1}">
+            <!--<result name="list">/WEB-INF/pages/base/decidedzone.jsp</result>-->
+            <result name="add">/WEB-INF/pages/qupai/noticebill_add.jsp</result>
+        </action>
+        <action name="workerdoermanager_*" class="workerdoermanager" method="{1}">
+            <!--<result name="list">/WEB-INF/pages/base/decidedzone.jsp</result>-->
+        </action>
+        <action name="functionaction_*" class="functionaction" method="{1}">
+            <result name="list">/WEB-INF/pages/admin/function.jsp</result>
+        </action>
+        <action name="roleaction_*" class="roleaction" method="{1}">
+            <result name="list">/WEB-INF/pages/admin/role.jsp</result>
         </action>
     </package>
 </struts>
